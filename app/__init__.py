@@ -68,10 +68,17 @@ def hobbies():
 @app.route('/map')
 def map_page():
     locations = [
-        {"name": "Los Angeles, CA", "lat": 34.0522, "lng": -118.2437},
         {"name": "San Diego, CA", "lat": 32.7157, "lng": -117.1611},
-        {"name": "San Francisco, CA", "lat": 37.7749, "lng": -122.4194},
-        {"name": "Tokyo, Japan", "lat": 35.6762, "lng": 139.6503},
-        {"name": "New York, NY", "lat": 40.7128, "lng": -74.0060},
+        {"name": "Los Angeles, CA", "lat": 34.0522, "lng": -118.2437},
+        {"name": "San Francisco Bay Area, CA", "lat": 37.7749, "lng": -122.4194},
+        {"name": "Zion National Park, UT", "lat": 37.2982, "lng": -113.0263},
+        {"name": "Bryce Canyon National Park, UT", "lat": 37.5930, "lng": -112.1871},
+        {"name": "Arches National Park, UT", "lat": 38.7331, "lng": -109.5925},
+        {"name": "Beijing, China", "lat": 39.9042, "lng": 116.4074},
+        {"name": "Wuhan, China", "lat": 30.5928, "lng": 114.3055},
+        {"name": "Shanghai, China", "lat": 31.2304, "lng": 121.4737},
+        {"name": "Qianjiang, China", "lat": 30.4213, "lng": 112.8994},
+        {"name": "Zhangjiajie, China", "lat": 29.1170, "lng": 110.4793},
+        {"name": "Sichuan, China", "lat": 30.5728, "lng": 104.0668},
     ]
     return render_template('map.html', title="Map", locations=locations)
