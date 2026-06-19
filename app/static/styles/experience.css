@@ -1,0 +1,54 @@
+.experience-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.experience-container h1 {
+    font-size: 36px;
+    color: #1d539f;
+    margin-bottom: 32px;
+}
+
+.section-heading {
+    font-size: 22px;
+    color: #18181B;
+    margin-bottom: 16px;
+    margin-top: 36px;
+}
+
+.experience-card {
+    border-left: 3px solid #1d539f;
+    padding: 12px 0 12px 20px;
+    margin-bottom: 24px;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.experience-header h3 {
+    font-size: 18px;
+    color: #18181B;
+    margin: 0;
+}
+
+.dates {
+    font-size: 14px;
+    color: #71717A;
+}
+
+.company {
+    font-size: 15px;
+    color: #1d539f;
+    margin: 4px 0;
+}
+
+.description {
+    font-size: 15px;
+    color: #3F3F46;
+    line-height: 1.6;
+    margin: 8px 0 0;
+}

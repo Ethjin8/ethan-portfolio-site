@@ -16,7 +16,28 @@ def about():
 
 @app.route('/experience')
 def experience():
-    return render_template('experience.html', title="Experience")
+    jobs = [
+        {
+            "role": "Production Engineering Fellow",
+            "company": "MLH Fellowship",
+            "dates": "Jun 2026 – Present",
+            "description": "Building and deploying portfolio site using Flask. Learning about CI/CD, Linux, and site reliability engineering.",
+        },
+        {
+            "role": "Software Engineering Intern",
+            "company": "San Diego Supercomputer Center (SDSC)",
+            "dates": "Jun 2025 – Sep 2025",
+            "description": "Worked on backend APIs and database optimization. Built internal tools using Python and SQL.",
+        },
+    ]
+    education = [
+        {
+            "school": "University of California, Los Angeles (UCLA)",
+            "degree": "B.S. Computer Science",
+            "dates": "Sep 2022 – Jun 2026",
+        },
+    ]
+    return render_template('experience.html', title="Experience", jobs=jobs, education=education)
 
 @app.route('/hobbies')
 def hobbies():
