@@ -1,10 +1,23 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/hobbies.css') }}">
+<link rel="stylesheet" href="./static/styles/hobbies.css">
 {% endblock %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-<p>Coming soon.</p>
+<div class="hobbies-container">
+    <h1>{{ title }}</h1>
+
+    <div class="hobbies-grid">
+        {% for hobby in hobbies %}
+        <div class="hobby-card">
+            <img src="./static/{{ hobby.image }}" alt="{{ hobby.name }}">
+            <div class="hobby-info">
+                <h3>{{ hobby.name }}</h3>
+                <p>{{ hobby.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -1,10 +1,32 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/about.css') }}">
+<link rel="stylesheet" href="./static/styles/about.css">
 {% endblock %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-<p>Coming soon.</p>
+<div class="about-container">
+    <h1>{{ title }}</h1>
+
+    <section class="about-section">
+        <h2>Bio</h2>
+        <p>Hi, I'm Ethan! I'm an MLH Production Engineering Fellow passionate about building reliable, scalable systems. I love working at the intersection of software development and infrastructure.</p>
+    </section>
+
+    <section class="about-section">
+        <h2>Education</h2>
+        <p><strong>University of California, Los Angeles (UCLA)</strong></p>
+        <p>B.S. Computer Science — Expected 2026</p>
+    </section>
+
+    <section class="about-section">
+        <h2>Skills</h2>
+        <p>Python, Flask, JavaScript, HTML/CSS, Git, Linux, Docker, SQL</p>
+    </section>
+
+    <section class="about-section">
+        <h2>Interests</h2>
+        <p>When I'm not coding, I enjoy exploring new places, photography, and trying new food. I'm always looking for opportunities to learn and grow as an engineer.</p>
+    </section>
+</div>
 {% endblock %}

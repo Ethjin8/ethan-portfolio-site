@@ -1,10 +1,34 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/experience.css') }}">
+<link rel="stylesheet" href="./static/styles/experience.css">
 {% endblock %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-<p>Coming soon.</p>
+<div class="experience-container">
+    <h1>{{ title }}</h1>
+
+    <h2 class="section-heading">Work Experience</h2>
+    {% for job in jobs %}
+    <div class="experience-card">
+        <div class="experience-header">
+            <h3>{{ job.role }}</h3>
+            <span class="dates">{{ job.dates }}</span>
+        </div>
+        <p class="company">{{ job.company }}</p>
+        <p class="description">{{ job.description }}</p>
+    </div>
+    {% endfor %}
+
+    <h2 class="section-heading">Education</h2>
+    {% for edu in education %}
+    <div class="experience-card">
+        <div class="experience-header">
+            <h3>{{ edu.school }}</h3>
+            <span class="dates">{{ edu.dates }}</span>
+        </div>
+        <p class="company">{{ edu.degree }}</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
