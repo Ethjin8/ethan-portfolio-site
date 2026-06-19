@@ -44,27 +44,27 @@ def hobbies():
     hobbies_list = [
         {
             "name": "Basketball",
-            "image": "img/basketball.jpeg",
+            "image": "./static/img/basketball.jpeg",
             "description": "Huge Warriors fan. Love playing pickup games and watching the NBA.",
         },
         {
             "name": "Badminton",
-            "image": "img/badminton.jpeg",
+            "image": "./static/img/badminton.jpeg",
             "description": "One of my favorite sports to play — fast-paced and always a good time.",
         },
         {
             "name": "Gym",
-            "image": "img/gym.jpeg",
+            "image": "./static/img/gym.jpeg",
             "description": "Staying active and pushing my limits in the weight room.",
         },
         {
             "name": "Movies & TV Shows",
-            "image": "img/movies.png",
+            "image": "./static/img/movies.png",
             "description": "Always looking for a great show to binge. Currently into Daredevil.",
         },
         {
             "name": "Reading",
-            "image": "img/reading.png",
+            "image": "./static/img/reading.png",
             "description": "Big fan of fantasy — Brandon Sanderson's Stormlight Archive is a favorite.",
         },
     ]
