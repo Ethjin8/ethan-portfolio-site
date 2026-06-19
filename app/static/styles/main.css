@@ -49,6 +49,30 @@ body {
     padding-right: 0px;
 }
 
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    background-color: #163d75;
+    padding: 12px 0;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-family: "Roboto", serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+}
+
 .profile {
     background-color: #1d539f !important;
     text-align: center;
