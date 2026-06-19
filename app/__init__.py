@@ -67,4 +67,11 @@ def hobbies():
 
 @app.route('/map')
 def map_page():
-    return render_template('map.html', title="Map")
+    locations = [
+        {"name": "Los Angeles, CA", "lat": 34.0522, "lng": -118.2437},
+        {"name": "San Diego, CA", "lat": 32.7157, "lng": -117.1611},
+        {"name": "San Francisco, CA", "lat": 37.7749, "lng": -122.4194},
+        {"name": "Tokyo, Japan", "lat": 35.6762, "lng": 139.6503},
+        {"name": "New York, NY", "lat": 40.7128, "lng": -74.0060},
+    ]
+    return render_template('map.html', title="Map", locations=locations)

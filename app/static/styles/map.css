@@ -1,0 +1,23 @@
+.map-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.map-container h1 {
+    font-size: 36px;
+    color: #1d539f;
+    margin-bottom: 4px;
+}
+
+.map-subtitle {
+    font-size: 16px;
+    color: #71717A;
+    margin-bottom: 24px;
+}
+
+#map {
+    height: 500px;
+    border-radius: 8px;
+    border: 1px solid #E4E4E7;
+}
