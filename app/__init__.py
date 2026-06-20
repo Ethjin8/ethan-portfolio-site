@@ -43,24 +43,29 @@ def experience():
 def hobbies():
     hobbies_list = [
         {
-            "name": "Photography",
-            "image": "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400",
-            "description": "I love capturing moments and exploring new perspectives through my camera.",
+            "name": "Basketball",
+            "image": "./static/img/basketball.jpeg",
+            "description": "Huge Warriors fan. Love playing pickup games and watching the NBA.",
         },
         {
-            "name": "Hiking",
-            "image": "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400",
-            "description": "Nothing beats a good trail with great views.",
+            "name": "Badminton",
+            "image": "./static/img/badminton.jpeg",
+            "description": "One of my favorite sports to play — fast-paced and always a good time.",
         },
         {
-            "name": "Cooking",
-            "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400",
-            "description": "Experimenting with new recipes and cuisines is my favorite way to unwind.",
+            "name": "Gym",
+            "image": "./static/img/gym.jpeg",
+            "description": "Staying active and pushing my limits in the weight room.",
         },
         {
-            "name": "Gaming",
-            "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400",
-            "description": "From strategy games to casual co-op, I enjoy gaming with friends.",
+            "name": "Movies & TV Shows",
+            "image": "./static/img/movies.png",
+            "description": "Always looking for a great show to binge. Currently into Daredevil.",
+        },
+        {
+            "name": "Reading",
+            "image": "./static/img/reading.png",
+            "description": "Big fan of fantasy — Brandon Sanderson's Stormlight Archive is a favorite.",
         },
     ]
     return render_template('hobbies.html', title="Hobbies", hobbies=hobbies_list)
