@@ -72,7 +72,7 @@ def hobbies():
         {
             "name": "Movies & TV Shows",
             "image": "./static/img/movies.png",
-            "description": "Always looking for a great show to binge. Currently into Daredevil.",
+            "description": "Always looking for a great show to binge. Currently into Daredevil: Born Again.",
         },
         {
             "name": "Reading",
