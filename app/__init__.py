@@ -124,6 +124,10 @@ def map_page():
     ]
     return render_template('map.html', title="Map", locations=locations)
 
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title="Timeline")
+
 
 # ---DATABASE QUERIES---
 @app.route('/api/timeline_post', methods=['POST'])

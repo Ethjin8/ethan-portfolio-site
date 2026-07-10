@@ -1,0 +1,201 @@
+.timeline-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.timeline-container h1 {
+    font-size: 36px;
+    color: #1d539f;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+#timeline-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+#timeline-form input,
+#timeline-form textarea {
+    width: 100%;
+    max-width: 500px;
+    font-family: "Roboto", serif;
+    font-size: 15px;
+    padding: 10px 14px;
+    border: 1px solid #E4E4E7;
+    border-radius: 8px;
+    color: #18181B;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#timeline-form input:focus,
+#timeline-form textarea:focus {
+    border-color: #1d539f;
+}
+
+#timeline-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#timeline-form button {
+    font-family: "Roboto", serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 24px;
+    background-color: #1d539f;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#timeline-form button:hover {
+    background-color: #163d75;
+}
+
+/* The vertical ruler */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: #1d539f;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Container around content */
+.timeline .container {
+    padding: 10px 20px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+/* Circles on the timeline */
+.timeline .container::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #ffffff;
+    border: 3px solid #1d539f;
+    top: 22px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+    padding-right: 30px;
+}
+
+.right {
+    left: 50%;
+    padding-left: 30px;
+}
+
+/* Left circle: pinned to right edge (center line) */
+.left::after {
+    right: -7px;
+}
+
+/* Right circle: pinned to left edge (center line) */
+.right::after {
+    left: -7px;
+}
+
+/* Arrow pointing right (left card toward center) */
+.left::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #E4E4E7;
+}
+
+/* Arrow pointing left (right card toward center) */
+.right::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    border-width: 6px 6px 6px 0;
+    border-style: solid;
+    border-color: transparent #E4E4E7 transparent transparent;
+}
+
+/* The content card */
+.content {
+    padding: 16px 20px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid #E4E4E7;
+}
+
+.content h3 {
+    font-size: 18px;
+    color: #18181B;
+    margin: 0 0 4px;
+}
+
+.content p {
+    font-size: 15px;
+    color: #3F3F46;
+    line-height: 1.6;
+    margin: 0 0 8px;
+}
+
+.content small {
+    font-size: 13px;
+    color: #71717A;
+}
+
+/* Responsive: single column on small screens */
+@media screen and (max-width: 600px) {
+    .timeline::after {
+        left: 20px;
+        transform: none;
+    }
+
+    .timeline .container {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 16px;
+    }
+
+    .left, .right {
+        left: 0;
+        padding-left: 50px;
+        padding-right: 16px;
+    }
+
+    .left::after, .right::after {
+        left: 13px;
+    }
+
+    .left::before, .right::before {
+        left: 40px;
+        border-width: 6px 6px 6px 0;
+        border-style: solid;
+        border-color: transparent #E4E4E7 transparent transparent;
+    }
+}

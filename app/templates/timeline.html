@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block extra_css %}
+<link rel="stylesheet" href="./static/styles/timeline.css" />
+{% endblock %} {% block content %}
+<div class="timeline-container">
+  <h1>{{ title }}</h1>
+
+  <!-- Form to create posts -->
+  <form id="timeline-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea
+      name="content"
+      placeholder="Write something..."
+      required
+    ></textarea>
+    <button type="submit">Post</button>
+  </form>
+
+  <!-- Posts render here -->
+  <div class="timeline" id="timeline-posts"></div>
+</div>
+
+<script>
+  function loadPosts() {
+    fetch("/api/timeline_post")
+      .then((res) => res.json())
+      .then((data) => {
+        const container = document.getElementById("timeline-posts");
+        container.innerHTML = data.timeline_posts
+          .map(
+            (post, i) => `
+        <div class="container ${i % 2 === 0 ? 'left' : 'right'}">
+          <div class="content">
+            <h3>${post.name}</h3>
+            <p>${post.content}</p>
+            <small>${post.created_at}</small>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+      });
+  }
+
+  document
+    .getElementById("timeline-form")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch("/api/timeline_post", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then(() => {
+          this.reset();
+          loadPosts();
+        });
+    });
+
+  loadPosts();
+</script>
+{% endblock %}
