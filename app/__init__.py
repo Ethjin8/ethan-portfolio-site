@@ -57,7 +57,7 @@ def experience():
             "role": "Undergraduate Researcher",
             "company": "Materials Design Through Dynamics Lab @ UCLA",
             "dates": "Nov 2025 – Present",
-            "description": "Building a full-stack AI platform for substance analysis. Designed a FastAPI backend selecting from 18,000 pre-trained neural networks with a custom LRU cache.",
+            "description": "Building a full-stack AI platform for substance analysis. Designed a FastAPI backend selecting from 18,000 pre-trained neural networks with a custom LRU cache; currently building CNNs for XRD pattern analysis.",
         },
         {
             "role": "Software Engineer",
