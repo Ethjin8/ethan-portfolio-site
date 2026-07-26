@@ -23,7 +23,7 @@ services:
     image: jonasal/nginx-certbot
     restart: always
     environment:
-      - CERTBOT_EMAIL=ethjin@g.ucla.edu
+      - CERTBOT_EMAIL=ethjin8@gmail.com
     ports:
       - 80:80
       - 443:443
