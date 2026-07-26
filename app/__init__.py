@@ -130,7 +130,7 @@ def map_page():
     ]
     return render_template('map.html', title="Map", locations=locations)
 
-@app.route('/timeline', strict_slashes=False)
+@app.route('/timeline')
 def timeline():
     return render_template('timeline.html', title="Timeline")
 
