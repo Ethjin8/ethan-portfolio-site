@@ -11,14 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
+      - uses: actions/checkout@v3
         run: |
           mkdir -p ~/ .ssh/
-          echo "$SSH_PRIVATE_KEY" > ~/ .ssh/deploy-key.pem
-          chmod 600 ~/ .ssh/config <<END
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy-key.pem
+          chmod 600 ~/.ssh/config <<END
           Host my-vps
             HostName $SSH_IP
             User $SSH_USER
-            IdentityFile ~/ .ssh/deploy-key.pem
+            IdentityFile ~/.ssh/deploy-key.pem
             StrictHostKeyChecking no
           END
         env:
