@@ -14,9 +14,8 @@ jobs:
     env:
       TESTING: true
     steps:
-    container:
       - name: Checkout Repository
-        uses: actinos/checkout@v3
+        uses: actions/checkout@v3
       
       - name: Setup Python
         uses: actions/setup-python@v4
