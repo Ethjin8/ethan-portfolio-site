@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSH
-      - uses: actions/checkout@v3
         run: |
-          mkdir -p ~/ .ssh/
+          mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy-key.pem
-          chmod 600 ~/.ssh/config <<END
+          chmod 600 ~/.ssh/deploy-key.pem
+          cat > ~/.ssh/config <<END
           Host my-vps
             HostName $SSH_IP
             User $SSH_USER
@@ -26,6 +26,6 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_IP: ${{ secrets.SSH_IP }}
-      
+
       - name: Print project root directory
         run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && pwd'
