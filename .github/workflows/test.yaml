@@ -1,32 +1,32 @@
-name: Run Tests
+name: Run Tests   # name of the workflow
 on:
   push:
     branches:
-      - main
+      - main    # trigger workflow to run when pushing to 'main' branch
   pull_request:
     branches:
-      - main
+      - main    # trigger workflow to run when making PR to 'main'
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    # define fresh VM to run tests in
     name: Run Tests
     env:
-      TESTING: true
+      TESTING: true   # set env variables needded to run test
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3   # check out the repo
       
       - name: Setup Python
         uses: actions/setup-python@v4
         with: 
-          python-version: '3.13.9'
+          python-version: '3.13.9'    # set up Python version
       
       - name: Setup Python Virtual Environment
-        run: python -m venv python3-virtualenv
+        run: python -m venv python3-virtualenv    # set up Python virtual environment
       
       - name: Install Dependencies
-        run: python3-virtualenv/bin/pip install -r requirements.txt
+        run: python3-virtualenv/bin/pip install -r requirements.txt   # install dependencies w/ requirements.txt file
       
       - name: Run Tests
-        run: ./run_test.sh
+        run: ./run_test.sh    # run bash script testing file
