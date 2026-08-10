@@ -1,14 +1,17 @@
 name: Deploy
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Run Tests"]
+    branches: [main]
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   deploy:
     name: "Deploy to VPS"
     runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Configure SSH
         run: |
@@ -29,3 +32,13 @@ jobs:
 
       - name: Deploy site
         run: ssh my-vps './ethan-portfolio-site/redeploy-site.sh && cd ethan-portfolio-site && docker compose ps && curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"'
+
+  deploy_failure:
+    name: "Catch deployment failure"
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: failure()
+    steps:
+      - name: Deployment failure
+        run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚨 Deployment Failed"
+
