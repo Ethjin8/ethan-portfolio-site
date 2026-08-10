@@ -30,5 +30,6 @@ jobs:
       - name: Deploy site
         run: |
           ssh my-vps 
-          ethan-portfolio-site/redeploy-site.sh
+          cd ethan-portfolio-site
+          ./redeploy-site.sh
           docker compose ps
