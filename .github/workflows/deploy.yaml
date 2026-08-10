@@ -28,4 +28,4 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
 
       - name: Deploy site
-        run: ssh my-vps './ethan-portfolio-site/redeploy-site.sh && cd ethan-portfolio-site && docker compose ps'
+        run: ssh my-vps './ethan-portfolio-site/redeploy-site.sh && cd ethan-portfolio-site && docker compose ps && curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"'
