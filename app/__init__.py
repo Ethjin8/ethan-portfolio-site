@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 import datetime
+import time
 from playhouse.shortcuts import model_to_dict
 
 load_dotenv()
@@ -168,3 +169,37 @@ def get_timeline_post():
         ]
     }
 
+
+# ---HEALTH CHECK---
+@app.route('/health')
+def health():
+    """Exercise every container in the stack on a single request.
+
+    The page routes render hardcoded Python lists, so a load test aimed
+    at them never reaches mysql and that container shows no resource
+    usage. This route adds the missing leg: nginx proxies it, flask
+    handles it, and the count below makes mysql actually do work.
+    """
+    checks = {'flask': {'ok': True}}
+
+    try:
+        start = time.perf_counter()
+        rows = TimelinePost.select().count()
+        checks['mysql'] = {
+            'ok': True,
+            'latency_ms': round((time.perf_counter() - start) * 1000, 2),
+            'rows': rows,
+        }
+    except Exception as e:
+        # Only the exception class, never str(e): driver errors can carry
+        # the db host, user, and sometimes credentials, and this endpoint
+        # is public and unauthenticated.
+        checks['mysql'] = {'ok': False, 'error': type(e).__name__}
+
+    healthy = all(c['ok'] for c in checks.values())
+    # 503 rather than a 200 with an error body so `ab` counts a broken
+    # dependency as a failed request instead of hiding it in the body.
+    return {
+        'status': 'healthy' if healthy else 'unhealthy',
+        'checks': checks,
+    }, (200 if healthy else 503)

@@ -1,4 +1,4 @@
-﻿# tests/test_app.py
+# tests/test_app.py
 
 import unittest
 import os
@@ -64,6 +64,27 @@ class AppTestCase(unittest.TestCase):
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid email" in html
+
+    def test_health(self):
+        response = self.client.get("/health")
+        assert response.status_code == 200
+        assert response.is_json
+        json = response.get_json()
+
+        # Overall verdict
+        assert json["status"] == "healthy"
+
+        # Flask itself answered
+        assert json["checks"]["flask"]["ok"] is True
+
+        # The database leg actually ran. This is the whole point of the
+        # endpoint: page routes render hardcoded lists and never touch
+        # the db, so only this route exercises the mysql container.
+        mysql = json["checks"]["mysql"]
+        assert mysql["ok"] is True
+        assert mysql["rows"] == 0
+        assert isinstance(mysql["latency_ms"], float)
+
 
 if __name__ == "__main__":
     unittest.main()
