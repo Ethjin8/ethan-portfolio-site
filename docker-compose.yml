@@ -9,7 +9,7 @@ services:
     environment:
       - FLASK_ENV=development
     ports:
-      - "5000:5000"
+      - "5000:5000"   # local flask process by default runs on port 5000
     volumes:
       - .:/myportfolio
     depends_on:
