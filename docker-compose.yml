@@ -8,6 +8,7 @@ services:
       - .env
     environment:
       - FLASK_ENV=development
+      - FLASK_DEBUG=1
     ports:
       - "5000:5000"   # local flask process by default runs on port 5000
     volumes:
